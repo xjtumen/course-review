@@ -23,7 +23,7 @@ client = MongoClient('127.0.0.1', 27017, connectTimeoutMS=3000)
 # colall = mongoclient['all']  # offical+review
 
 mongoclient = client['test']
-colall = mongoclient['all_elective_courses']  # offical+review
+colall = mongoclient['all_courses']  # offical+review
 
 
 dept_str_to_num = {
