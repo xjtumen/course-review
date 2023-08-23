@@ -17,7 +17,7 @@
                             style="outline:none" data-toggle="modal" data-target="#signin">登录
                     </button>
                 {% endif %}
-                <a class="navbar-brand" href="{{ url_for('home.index') }}">XJ课评</a>
+                <a class="navbar-brand" href="{{ url_for('home.index') }}">交大門评课社区</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,8 +31,8 @@
                         <li {% if this_module and this_module=='home.follow_reviews' %}class="active"{% endif %}><a
                                 href="{{ url_for('home.follow_reviews') }}">关注</a></li>
                     {% endif %}
-                    <li><a href="https://xjtu.live/c/teachers/15" target="_blank">导师</a></li>
-{#                    <li><a href="https://xjtu.live/" target="_blank">大門</a></li>#}
+                    <li><a href="https://xjtu.live/c/teachers/15" target="_blank">导师信息</a></li>
+                    <li><a href="https://xjtu.live/" target="_blank">交大門</a></li>
                 </ul>
 
                 {% if this_module == 'home.search_reviews' %}

@@ -1,6 +1,6 @@
-# XJ课评
+# 交大門评课社区
 
-XJ课评，fork自[USTC评课社区](https://github.com/USTC-iCourse/ustc-course)。
+交大門评课社区，fork自[USTC评课社区](https://github.com/USTC-iCourse/ustc-course)。
 
 ## 特色功能：
 在USTC评课社区源码的基础上做了些许修改：
