@@ -117,13 +117,13 @@ def plot_row(plot_term):
     # xaxis = dict(autorange="reversed")
     # fig.update_layout(xaxis=xaxis)
     fig.add_vline(average, line_width=1, line_dash="dash", line_color='blue',
-                  annotation_text=f'平均分: {average:.0f}', annotation_position='top left')
+                  annotation_text=f'平均分: {average:.1f}', annotation_position='top left')
     fig.add_vline(highest, line_width=1, line_dash="dash", line_color='orange',
                   annotation_text=f'最高分: {highest:.0f}')
     if lowest != 0.:
       fig.add_vline(lowest, line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.0f}', annotation_position='top left')
     else:
-      fig.add_vline(50., line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.1f}')
+      fig.add_vline(50., line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.0f}')
 
     fig.update_annotations(font=dict(family="sans serif", color='rgba(97, 37, 16, 0.99)'))
     fig.update_layout(title_text=f'区间分数统计 {semester}', title_x=0.5)
