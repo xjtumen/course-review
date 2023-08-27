@@ -27,7 +27,9 @@
                     <li {% if sort_by=='popular' %}class="active"{% endif %}><a
                             href="{{ url_for('course.index', sort_by='popular', course_type=course_type) }}">点评数量</a>
                     </li>
+
                     <li role="separator" class="divider"></li>
+
                     <li class="disabled"><a href="#">课程类别</a></li>
                     <li class="item {% if not course_type %}active{% endif %}"><a
                             href="{{ url_for(this_module, q=keyword, sort_by=sort_by) }}">全部</a></li>
@@ -36,6 +38,20 @@
                                 href="{{ url_for(this_module, q=keyword, course_type=type, sort_by=sort_by) }}">{{ course_type_label[0] }}</a>
                         </li>
                     {% endfor %}
+                    {% if course_type=="基础通识类核心课" or course_type=="基础通识类选修课" %}
+
+                        <li role="separator" class="divider"></li>
+
+                        <li class="disabled"><a href="#">选修课板块</a></li>
+                        <li class="item {% if not join_type %}active{% endif %}"><a
+                                href="{{ url_for(this_module, q=keyword, course_type=course_type, sort_by=sort_by) }}">全部</a>
+                        </li>
+                        {% for _join_type in join_types %}
+                            <li class="item {% if _join_type==join_type %}active{% endif %}"><a
+                                    href="{{ url_for(this_module, q=keyword, course_type=course_type, sort_by=sort_by, join_type=_join_type) }}">{{ _join_type }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </li>
         {% endif %}

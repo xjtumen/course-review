@@ -21,7 +21,7 @@
             <span><strong>选修课板块：</strong></span>
 
             <li class="item {% if not join_type %}active{% endif %}">
-                <a style="padding: 6px 5px;" href="{{ url_for(this_module, q=keyword,course_type=course_type, sort_by=sort_by) }}">全部</a>
+                <a style="padding: 6px 5px;" href="{{ url_for(this_module, q=keyword, course_type=course_type, sort_by=sort_by) }}">全部</a>
             </li>
             {% for _join_type in join_types %}
                 <li class="item {% if _join_type==join_type %}active{% endif %}">
