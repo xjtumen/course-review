@@ -63,7 +63,7 @@ course_type_dict = {
 
 join_types = ['全球视野与中国道路', '哲学智慧与创新思维', '文化传承与艺术审美', '生命关怀与社会认知', '科学探索与技术创新', '经典导读与学术写作']
 
-def plot_row(plot_term, course_name):
+def plot_row(plot_term):
   average, lowest, highest, semester = plot_term.grade_average, plot_term.grade_lowest, plot_term.grade_highest, plot_term.term
   try:
     if semester[4] == '1':
@@ -88,11 +88,12 @@ def plot_row(plot_term, course_name):
     counts = np.array(df_course['人数'])
     bins = np.array([55, 65, 75, 85, 95])
     # bins = 0.5 * (bins[:-1] + bins[1:])
-    fig = px.bar(df_course, y=bins, x=counts, labels={'x': '人数', 'y': '分数段'},
-                 hover_data=['分数段', '百分比'], text='百分比', orientation='h')
-    fig.update_traces(insidetextanchor="middle",  # textposition='inside'
-                      insidetextfont=dict(family="sans serif", color='red'),  # size=18
-                      outsidetextfont=dict(family="sans serif", color='red'))
+    fig = px.bar(df_course, x=bins, y=counts, labels={'x': '分数段', 'y': '人数'},
+                 hover_data=['分数段', '百分比'], text='百分比')#, orientation='h')
+    # fig.update_traces(insidetextanchor="middle",  # textposition='inside'
+    #                   insidetextfont=dict(family="sans serif", color='red'),  # size=18
+    #                   outsidetextfont=dict(family="sans serif", color='red'))
+
     # needed if use `textposition='outside'`
     # x_mins = []
     # y_mins = []
@@ -113,24 +114,25 @@ def plot_row(plot_term, course_name):
     fig.update_traces(marker_color=green, marker_line_color='blue')
     fig.update_layout(bargap=0.)
 
-    yaxis = dict(autorange="reversed")
-    fig.update_layout(yaxis=yaxis)
-    fig.add_hline(average, line_width=1, line_dash="dash", line_color='blue',
-                  annotation_text=f'平均分: {average:.2f}')
-    fig.add_hline(highest, line_width=1, line_dash="dash", line_color='orange',
+    # xaxis = dict(autorange="reversed")
+    # fig.update_layout(xaxis=xaxis)
+    fig.add_vline(average, line_width=1, line_dash="dash", line_color='blue',
+                  annotation_text=f'平均分: {average:.0f}', annotation_position='top left')
+    fig.add_vline(highest, line_width=1, line_dash="dash", line_color='orange',
                   annotation_text=f'最高分: {highest:.0f}')
     if lowest != 0.:
-      fig.add_hline(lowest, line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.0f}')
+      fig.add_vline(lowest, line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.0f}', annotation_position='top left')
     else:
-      fig.add_hline(50., line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.0f}')
+      fig.add_vline(50., line_width=1, line_dash="dash", line_color='red', annotation_text=f'最低分: {lowest:.1f}')
 
     fig.update_annotations(font=dict(family="sans serif", color='rgba(97, 37, 16, 0.99)'))
     fig.update_layout(title_text=f'区间分数统计 {semester}', title_x=0.5)
-    height = 400
-    fig.update_layout(
-      autosize=False,
-      width=int(height / 0.7),
-      height=height)
+    fig.update_layout(margin=dict(l=0, r=10, t=50, b=10))
+    # height = 400
+    # fig.update_layout(
+    #   autosize=False,
+    #   width=int(height / 0.7),
+    #   height=height)
     return fig.to_html(full_html=False, include_plotlyjs='https://xjtu.live/xjtumen-g/cdn/plotly-2.17.1.min.js')
   except Exception as e:
     logging.warning(f'plot failed for {plot_term.course.name} {semester}: {e}')
@@ -232,7 +234,7 @@ def view_course(course_id):
   review_num = len(reviews)
   try:
     if plot_term.has_grade_graph:
-      div = plot_row(plot_term, course.name)
+      div = plot_row(plot_term)
     else:
       div = ''
   except:
