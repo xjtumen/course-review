@@ -2,6 +2,7 @@
     {% if course_type_dict %}
         <ul class="list-unstyled list-inline">
             <span><strong>课程类别：</strong></span>
+
             <li class="item {% if not course_type %}active{% endif %}">
                 <a style="padding: 6px 5px;" href="{{ url_for(this_module, q=keyword, sort_by=sort_by) }}">全部</a>
             </li>
@@ -11,6 +12,7 @@
                        href="{{ url_for(this_module, q=keyword, course_type=type, sort_by=sort_by) }}">{{ course_type_label[0] }}</a>
                 </li>
             {% endfor %}
+
         </ul>
     {% endif %}
     <ul class="list-unstyled list-inline">

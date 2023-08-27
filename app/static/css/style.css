@@ -1,5 +1,5 @@
 /* 颜色使用说明：
-主色调： #3c4043;
+主色调： #10a37f;
 Original: #337ab7
 辅色：
 */
@@ -397,7 +397,7 @@ p {
 
 
 .blue {
-    color: #3c4043;
+    color: #10a37f;
 }
 
 .grey {
@@ -562,7 +562,7 @@ a.nounderline:active {
 }
 
 .rating-stars {
-    color: #3c4043 !important;
+    color: #10a37f !important;
 }
 
 .star-rating {
@@ -692,7 +692,7 @@ a.nounderline:active {
 }
 
 .showmore-btn {
-    color: #3c4043;
+    color: #10a37f;
     background: transparent;
     border: none;
 }
