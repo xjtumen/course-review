@@ -15,6 +15,24 @@
 
         </ul>
     {% endif %}
+
+    {% if course_type=="基础通识类核心课" or course_type=="基础通识类选修课" %}
+        <ul class="list-unstyled list-inline">
+            <span><strong>选修课板块：</strong></span>
+
+            <li class="item {% if not join_type %}active{% endif %}">
+                <a style="padding: 6px 5px;" href="{{ url_for(this_module, q=keyword,course_type=course_type, sort_by=sort_by) }}">全部</a>
+            </li>
+            {% for _join_type in join_types %}
+                <li class="item {% if _join_type==join_type %}active{% endif %}">
+                    <a style="padding: 6px 5px;"
+                       href="{{ url_for(this_module, q=keyword, course_type=course_type, sort_by=sort_by, join_type=_join_type) }}">{{ _join_type }}</a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
+
     <ul class="list-unstyled list-inline">
         <span><strong>排序方式：</strong></span>
         <li class="item {% if sort_by!='popular' %}active{% endif %}">

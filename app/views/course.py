@@ -9,7 +9,7 @@ from app.models import *
 from app.forms import ReviewForm, CourseForm
 from app import db
 from app.utils import sanitize
-from sqlalchemy import or_, func
+from sqlalchemy import or_, func, and_
 import plotly.express as px
 
 course = Blueprint('course', __name__)
@@ -61,6 +61,7 @@ course_type_dict = {
   '体育课': ['体育课'],
 }
 
+join_types = ['全球视野与中国道路', '哲学智慧与创新思维', '文化传承与艺术审美', '生命关怀与社会认知', '科学探索与技术创新', '经典导读与学术写作']
 
 def plot_row(plot_term, course_name):
   average, lowest, highest, semester = plot_term.grade_average, plot_term.grade_lowest, plot_term.grade_highest, plot_term.term
@@ -142,13 +143,18 @@ def index():
   per_page = request.args.get('per_page', 10, type=int)
   sort_by = request.args.get('sort_by', None, type=str)
   course_type = request.args.get('course_type', None, type=str)
+  join_type = request.args.get('join_type', None, type=str)
   course_query = Course.query
 
   # 课程类型
   if course_type in course_type_dict.keys():
-    course_query = Course.query.distinct().join(CourseTerm).filter(
-      or_(CourseTerm.course_type.in_(course_type_dict[course_type]),
-          CourseTerm.join_type.in_(course_type_dict[course_type])))
+    if join_type is not None:
+      course_query = Course.query.distinct().join(CourseTerm).filter(
+        and_(CourseTerm.course_type.in_(course_type_dict[course_type]),
+             CourseTerm.join_type == (join_type)))
+    else:
+      course_query = Course.query.distinct().join(CourseTerm).filter(
+        CourseTerm.course_type.in_(course_type_dict[course_type]))
 
   # 排序方式
   if sort_by == 'popular':
@@ -161,7 +167,7 @@ def index():
     courses_page = course_query.join(CourseRate).order_by(Course.QUERY_ORDER()).paginate(page=page, per_page=per_page)
 
   return render_template('course-index.html', courses=courses_page,
-                         course_type=course_type, course_type_dict=course_type_dict, sort_by=sort_by,
+                         course_type=course_type, course_type_dict=course_type_dict, sort_by=sort_by, join_type=join_type, join_types=join_types,
                          title='课程列表', deptlist=deptlist, this_module='course.index')
 
 
