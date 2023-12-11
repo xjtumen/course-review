@@ -240,7 +240,7 @@ def generic_upload(file, type):
   script_head = '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction(2,'
   script_tail = ');</script>'
   if ok:
-    url = '/uploads/' + type + 's/' + message
+    url = '/course/uploads/' + type + 's/' + message
     return script_head + '"' + url + '"' + script_tail
   else:
     return script_head + '""' + ',' + '"' + message + '"' + script_tail

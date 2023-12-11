@@ -101,12 +101,13 @@ def page_not_found(e):
 
 from app.views import *
 
-app.register_blueprint(home, url_prefix='')
-app.register_blueprint(course, url_prefix='/course')
-app.register_blueprint(review, url_prefix='/review')
-app.register_blueprint(api, url_prefix='/api')
-app.register_blueprint(user, url_prefix='/user')
-app.register_blueprint(teacher, url_prefix='/teacher')
-app.register_blueprint(admin, url_prefix='/admin')
-app.register_blueprint(stats, url_prefix='/stats')
-app.register_blueprint(program, url_prefix='/program')
+app.register_blueprint(home, url_prefix='/course/')
+app.register_blueprint(course, url_prefix='/course/course')
+app.register_blueprint(review, url_prefix='/course/review')
+app.register_blueprint(api, url_prefix='/course/api')
+app.register_blueprint(user, url_prefix='/course/user')
+app.register_blueprint(teacher, url_prefix='/course/teacher')
+app.register_blueprint(admin, url_prefix='/course/admin')
+app.register_blueprint(stats, url_prefix='/course/stats')
+app.register_blueprint(program, url_prefix='/course/program')
+

@@ -553,8 +553,8 @@ class Course(db.Model):
   @property
   def image(self):
     if self._image:
-      return '/uploads/images/' + self._image
-    return '/static/image/user.png'
+      return '/course/uploads/images/' + self._image
+    return '/course/static/image/user.png'
 
   @property
   def joined_users(self):

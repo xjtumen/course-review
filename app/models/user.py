@@ -182,7 +182,7 @@ class User(db.Model, UserMixin):
 
   @property
   def default_avatar(self):
-    return '/static/image/user.png'
+    return '/course/static/image/user.png'
 
   @property
   def avatar(self):
@@ -470,8 +470,8 @@ class TeacherInfoHistory(db.Model):
   @property
   def image(self):
     if self._image:
-      return '/uploads/images/' + self._image
-    return '/static/image/teacher.jpg'
+      return '/course/uploads/images/' + self._image
+    return '/course/static/image/teacher.jpg'
 
 
 class Teacher(db.Model):
@@ -529,8 +529,8 @@ class Teacher(db.Model):
   @property
   def image(self):
     if self._image:
-      return '/uploads/images/' + self._image
-    return '/static/image/teacher.jpg'
+      return '/course/uploads/images/' + self._image
+    return '/course/static/image/teacher.jpg'
 
   def set_image(self, image):
     self._image = image

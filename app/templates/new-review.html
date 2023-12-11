@@ -61,7 +61,7 @@
                                 </div>
                             {% endfor %}
 
-                            <link rel="stylesheet" href="/static/css/star-rating.min.css" media="all" rel="stylesheet"
+                            <link rel="stylesheet" href="/course/static/css/star-rating.min.css" media="all" rel="stylesheet"
                                   type="text/css">
                             <div class="ud-pd-sm">
                                 <span class="weight-heavy pull-left">评个分吧？</span>
@@ -122,7 +122,7 @@
 {% endblock %}
 
 {% block script %}
-    <script src="/static/js/star-rating.min.js" type="text/javascript"></script>
+    <script src="/course/static/js/star-rating.min.js" type="text/javascript"></script>
     <script>
         function submit_review() {
             var url = "{{ url_for('course.new_review', course_id=course.id) }}";
