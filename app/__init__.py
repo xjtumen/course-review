@@ -17,6 +17,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object('config.default')
+# app.config['APPLICATION_ROOT'] = 'course'
 
 if app.config['DEBUG']:
   app.config['WTF_CSRF_CHECK_DEFAULT'] = False

@@ -2,7 +2,7 @@ import os
 import sys
 
 # Server config
-SERVER_NAME = 'c.xjtu.live'
+SERVER_NAME = 'xjtu.live'
 DEBUG = False
 # DEBUG = True
 # SERVER_NAME = 'localhost:8110'
