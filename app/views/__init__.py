@@ -7,3 +7,5 @@ from .teacher import teacher
 from .admin import admin
 from .stats import stats
 from .program import program
+
+from .real_home import real_home

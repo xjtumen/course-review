@@ -31,8 +31,8 @@
                         <li {% if this_module and this_module=='home.follow_reviews' %}class="active"{% endif %}><a
                                 href="{{ url_for('home.follow_reviews') }}">关注</a></li>
                     {% endif %}
-                    <li><a href="https://xjtu.live/c/teachers/15" target="_blank">导师信息</a></li>
-                    <li><a href="https://xjtu.live/" target="_blank">交大門</a></li>
+                    <li><a href="{{ url_for('real_home.index') }}c/teachers/15" target="_blank">导师信息</a></li>
+                    <li><a href="{{ url_for('real_home.index') }}" target="_blank">交大門</a></li>
                 </ul>
 
                 {% if this_module == 'home.search_reviews' %}
@@ -122,8 +122,11 @@
                             <span class="h2">使用交大門账户登录</span>
                         </div>
                         <div id="signin-alert" role="alert" class="display: none"></div>
-                        <p>如果您已在<a href="https://xjtu.live" target="_blank">xjtu.live</a><strong>登录</strong>，点击登录按钮将<em>直接</em>使用您的账户登录评课社区</p>
-                        <p>如果您尚未登录/注册账户，点击登录按钮将跳转到<a href="https://xjtu.live" target="_blank">xjtu.live</a>进行登录/注册</p>
+                         <p>如果您已在交大門<strong>登录</strong>，点击登录按钮将<em>直接</em>使用您的账户登录评课社区</p>
+
+                                                <p>如果您尚未登录/注册交大門账户，
+                                                    点击登录按钮将<strong>跳转</strong>到交大门进行登录/注册</p>
+
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="remember">不要记住我（浏览器退出后也将退出评课社区登录）
@@ -164,7 +167,7 @@
 <script src="/course/static/js/jquery.min.js"></script>
 <script src="/course/static/js/bootstrap.min.js"></script>
 <script src="/course/static/js/clipboard.min.js"></script>
-<script async src="https://xjtu.live/xjtumen-g/cdn/MathJax.js?config=TeX-AMS_HTML"></script>
+<script async src="https://cf.xjtu.live/xjtumen-g/cdn/MathJax.js?config=TeX-AMS_HTML"></script>
 {% include 'common-scripts.html' %}
 <script>
     $('#signin').on('shown.bs.modal', function () {

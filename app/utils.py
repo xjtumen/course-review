@@ -358,7 +358,9 @@ def text(html_string):
 
 @app.template_filter('link_absolute')
 def absolute(html_string):
-  return lxml.html.make_links_absolute(html_string, base_url="https://xjtu.live/courses")
+  # TODO: potential pitfall:
+  # where is this function used?
+  return lxml.html.make_links_absolute(html_string, base_url="https://xjtu.live/course")
 
 
 def cal_validation_code(user):

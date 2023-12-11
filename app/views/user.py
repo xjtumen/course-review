@@ -123,7 +123,8 @@ def account_settings():
     user.save()
   elif request.method == 'POST':
     errors = ['表单验证错误：' + str(form.errors)]
-  return render_template('settings.html', user=user, form=form, errors=errors, title='用户设置')
+  return render_template('settings.html', user=user, form=form, errors=errors, title='用户设置',
+                         base_url=request.host_url)
 
 
 @user.route('/<int:user_id>/courses/')

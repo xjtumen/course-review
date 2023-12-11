@@ -15,6 +15,7 @@ from datetime import datetime
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_migrate import Migrate
 
+
 app = Flask(__name__)
 app.config.from_object('config.default')
 # app.config['APPLICATION_ROOT'] = 'course'
@@ -100,6 +101,7 @@ def page_not_found(e):
 
 from app.views import *
 
+app.register_blueprint(real_home, url_prefix='/')
 app.register_blueprint(home, url_prefix='/course/')
 app.register_blueprint(course, url_prefix='/course/course')
 app.register_blueprint(review, url_prefix='/course/review')
