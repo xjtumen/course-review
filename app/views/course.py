@@ -133,7 +133,10 @@ def plot_row(plot_term):
     #   autosize=False,
     #   width=int(height / 0.7),
     #   height=height)
-    return fig.to_html(full_html=False, include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.17.1.min.js')
+    return fig.to_html(full_html=False,
+                       include_plotlyjs=False # js loaded asyncly in layout.html
+                       # include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.27.0.min.js'
+                       )
   except Exception as e:
     logging.warning(f'plot failed for {plot_term.course.name} {semester}: {e}')
     return ''
