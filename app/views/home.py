@@ -200,7 +200,8 @@ def signin():
   error = ''
 
   nonce = secrets.token_urlsafe()
-  return_url = app.config['RETURN_URL']
+  return_url = f'{request.host_url}course/signincallback/'
+  print(return_url)
   payload = str.encode("nonce=" + nonce + "&return_sso_url=" + return_url)
 
   BASE64_PAYLOAD = base64.b64encode(payload)
@@ -209,7 +210,9 @@ def signin():
   sig = hmac.new(app.config['CALL_DISCOURSE_SSO_SECRET'], BASE64_PAYLOAD, hashlib.sha256)
   HEX_SIGNATURE = sig.hexdigest()
 
-  disurl = app.config['DISCOURSE_URL'] + "/session/sso_provider?sso=" + URL_ENCODED_PAYLOAD + "&sig=" + HEX_SIGNATURE
+  disurl =  f"{request.host_url}session/sso_provider?sso=" + URL_ENCODED_PAYLOAD + "&sig=" + HEX_SIGNATURE
+  print(disurl)
+
   session['nonce'] = nonce
   session['remember'] = form['remember'].data
   session['next_url'] = next_url

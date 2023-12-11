@@ -21,7 +21,6 @@ app.config.from_object('config.default')
 
 if app.config['DEBUG']:
   app.config['WTF_CSRF_CHECK_DEFAULT'] = False
-  app.config['RETURN_URL'] = 'http://localhost/signincallback/'
 
 toolbar = DebugToolbarExtension(app)
 

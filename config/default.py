@@ -2,7 +2,9 @@ import os
 import sys
 
 # Server config
-SERVER_NAME = 'xjtu.live'
+
+# do not set SERVER_NAME, and use caddy->nginx to enforce hostname
+# SERVER_NAME = 'xjtu.live'
 DEBUG = False
 # DEBUG = True
 # SERVER_NAME = 'localhost:8110'
@@ -59,10 +61,6 @@ DEBUG_TB_PROFILER_ENABLED = True
 DEBUG_TB_TEMPLATE_EDITOR_ENABLED = True
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 
-# URL to return to after signing on
-RETURN_URL = "https://c.xjtu.live/signincallback/"
-# URL to Discourse
-DISCOURSE_URL = "https://xjtu.live"
 # replace with your own secret
 CALL_DISCOURSE_SSO_SECRET = os.environ['COURSE_DISCOURSE_AS_SSO_PROVIDER_SECRETE']
 assert len(CALL_DISCOURSE_SSO_SECRET) > 20
