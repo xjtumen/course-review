@@ -152,8 +152,19 @@ def signincallback():
       groups = get_res(
         "groups")  # 'moderators,trust_level_3,trust_level_4,talents,PartialDevelopers,trust_level_1,trust_level_2,trust_level_0,admins,staff'
       is_course_review_admin = 'CourseReviewAdmin' in groups.split(',') if groups else False
-      user = User(username=username, email=email, password=str(uuid.uuid4().hex))
-      user.xjtumen_username = username
+      if User.query.filter_by(username=username).first():
+        # if a user changed its email, then its username will be a duplicate key
+        for i in range(32): # I don't think a user will change its email more than 32 times
+          proposed_username = f'{username}_{i}'
+          res = User.query.filter_by(username=proposed_username).first()
+          if not res:
+            break
+        else:
+          raise ValueError(f'the username {username} is too duplicated with email: {email}')
+      else:
+        proposed_username = username
+      user = User(username=proposed_username, email=email, password=str(uuid.uuid4().hex))
+      user.xjtumen_username = proposed_username
 
       if avatar_url:
         user.set_avatar(avatar_url)
