@@ -13,7 +13,15 @@
                     <h4 class="blue">简介</h4>
                     <p>欢迎来到交大門评课社区！目前，有 {{ num_users }} 位小伙伴们为 {{ course_count }}
                         门课程贡献了 {{ review_count }} 篇点评。</p>
-                    <p>你可以点评课程、获取课程信息</p>
+                    <p>感谢志愿者自发提供的成绩分布数据和南洋学辅的大力支持。如果你有新数据欢迎到<a href="/">交大門主页</a>反馈给<a href="/u/admin">@admin</a>。</p>
+                    <p>你可以在此尽情点评课程、获取课程信息。</p>
+                    <h4 class="blue">起因</h4>
+                    <p>最初，经常有“求推荐通识选修课/通识核心课”的问题，
+                        网上有个<a href="https://kdocs.cn/l/csz66VHlZ9NC">【金山文档】西安交大基础通识类课程推荐表</a>。</p>
+                    <p>我认为这是信息时代的一种极为原始的交流手段。</p>
+                      <p>因而我在交大門建了个专门的<a href="/c/knowledge/courses/16">课程信息与点评</a>类别，</p>
+                    <p>但这也不适合课程信息点评这一需求，于是有了<a href="/t/topic/4880">课程信息功能开发项目</a>。</p>
+                    <p>我在<a href="https://github.com/USTC-iCourse/ustc-course">USTC评课社区源码</a>基础上<a href="/t/topic/4919">改了改</a>就有了本网站。</p>
                 </div>
                 <div class="ud-pd-sm lh-lg">
                     <h4 class="blue">特色</h4>
@@ -50,7 +58,7 @@
 
                     <p><em>交大門评课社区</em>由XJTU<strong>学生</strong>基于科大评课社区二次开发，
                         代码开源在：<a href="https://github.com/xjtumen/course-review"
-                                             target="_blank">https://github.com/xjtumen/course-review</a>。
+                                      target="_blank">https://github.com/xjtumen/course-review</a>。
                     </p>
                 </div>
 
@@ -60,11 +68,11 @@
                     <p><a href="{{ url_for('real_home.index') }}" target="_blank">交大門</a></p>
                 </div>
 
-{#                <div class="ud-pd-sm">#}
-{#                    <h4 class="blue">XJTU.MEN Telegram channel</h4>#}
-{#                    <p><a href="https://t.me/xjtumen" target="_blank">https://t.me/xjtumen</a></p>#}
-{#                    <p><img src="/course/static/image/telegram_channel.jpg" width="40%"/></p>#}
-{#                </div>#}
+                {#                <div class="ud-pd-sm">#}
+                {#                    <h4 class="blue">XJTU.MEN Telegram channel</h4>#}
+                {#                    <p><a href="https://t.me/xjtumen" target="_blank">https://t.me/xjtumen</a></p>#}
+                {#                    <p><img src="/course/static/image/telegram_channel.jpg" width="40%"/></p>#}
+                {#                </div>#}
 
                 <div class="ud-pd-sm">
                     <h4 class="blue">交大門社交 Mastodon</h4>
@@ -86,14 +94,15 @@
                         </li>
                     </ul>
                     <p>
-                        都欢迎加入评课社区用户群（见上）。<strong>对于比较紧急的问题，例如网站bug、漏洞、网站无法访问等，请在<a href="{{ url_for('real_home.index') }}" target="_blank">交大門</a>联系admin。</strong>
+                        都欢迎加入评课社区用户群（见上）。<strong>对于比较紧急的问题，例如网站bug、漏洞、网站无法访问等，请在<a
+                            href="{{ url_for('real_home.index') }}" target="_blank">交大門</a>联系admin。</strong>
                     </p>
                 </div>
 
-{#                <div class="ud-pd-sm">#}
-{#                    <h4 class="blue">网站二维码（欢迎分享）</h4>#}
-{#                    <p><img src="/course/static/image/xjtumen.qr.png"/></p>#}
-{#                </div>#}
+                {#                <div class="ud-pd-sm">#}
+                {#                    <h4 class="blue">网站二维码（欢迎分享）</h4>#}
+                {#                    <p><img src="/course/static/image/xjtumen.qr.png"/></p>#}
+                {#                </div>#}
 
             </div>
         </div><!-- end float-element -->
