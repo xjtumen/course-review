@@ -20,6 +20,7 @@ def add_to_2_level_dict(root, key1, key2, value, sort_key):
 
 
 @program.route('/')
+@login_required
 def index():
   programs = Program.query.all()
   program_dict = {}

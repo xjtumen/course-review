@@ -143,6 +143,7 @@ def plot_row(plot_term):
 
 
 @course.route('/')
+@login_required
 def index():
   page = request.args.get('page', 1, type=int)
   per_page = request.args.get('per_page', 10, type=int)

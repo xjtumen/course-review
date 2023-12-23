@@ -11,6 +11,7 @@ stats = Blueprint('stats', __name__)
 
 
 @stats.route('/')
+@login_required
 def index(lang_en=False):
   '''view site stats'''
   today = datetime.now().strftime("%Y/%m/%d")

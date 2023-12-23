@@ -41,6 +41,7 @@ def redirect_to_index():
 
 
 @home.route('/')
+@login_required
 def index():
   return latest_reviews()
 
@@ -209,6 +210,8 @@ def signin():
 
   form = LoginForm()
   error = ''
+
+  print(request.cookies)
 
   nonce = secrets.token_urlsafe()
   return_url = f'{request.host_url}course/signincallback/'

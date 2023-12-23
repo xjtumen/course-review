@@ -42,5 +42,6 @@ def redirect_to_index():
 
 @real_home.route('/')
 def index():
+  # this is supposed to be the Discourse root
   pass
 
