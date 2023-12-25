@@ -814,12 +814,18 @@ a.nounderline:active {
         color: #777;
     }
 
+    .js-plotly-plot .plotly .user-select-none {
+        background: #292c2d;
+    }
+
+    .light_fig_div {
+        display: none;
+    }
 }
 
 /* Style rules for light mode */
-/*@media (prefers-color-scheme: light) {*/
-/*    body, .navbar, .float-element {*/
-/*        background-color: white;*/
-/*        color: black;*/
-/*    }*/
-/*}*/
+@media (prefers-color-scheme: light) {
+    .dark_fig_div {
+        display: none;
+    }
+}

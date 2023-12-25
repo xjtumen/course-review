@@ -166,8 +166,12 @@
 {#                    <div style="height:100vh;width:100vw;">#}
 {#                    {% if course.has_grade_graph %}#}
 {#                        <div class="ud-pd-sm">#}
-                <div loading="lazy"></div>
-                            {{ div_placeholder|safe }}
+                <div class="light_fig_div">
+                            {{ light_fig_div|safe }}
+                </div>
+                   <div class="dark_fig_div">
+                            {{ dark_fig_div|safe }}
+                </div>
 {#                        </div>#}
 {#                    {% endif %}#}
 {#                    </div>#}
@@ -532,7 +536,7 @@
                     {% endif %}
 
                     <div class="ud-pd-md dashed">
-                        <h4 class="blue">其他老师的「{{ course.name }}」课</h5>
+                        <h5 class="blue">其他老师的「{{ course.name }}」课</h5>
                             {% for rel_course in course.related_courses %}
                                 {% if rel_course != course %}
                                     <div class="ud-pd-sm">
@@ -549,7 +553,7 @@
 
                     {% for teacher in course.teachers %}
                         <div class="ud-pd-md dashed">
-                            <h4 class="blue">{{ teacher.name }}的其他课</h5>
+                            <h5 class="blue">{{ teacher.name }}的其他课</h5>
                                 {% for rel_course in course.same_teacher_courses(teacher) %}
                                     {% if rel_course != course %}
                                         <div class="ud-pd-sm">

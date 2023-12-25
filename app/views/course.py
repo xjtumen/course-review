@@ -133,10 +133,16 @@ def plot_row(plot_term):
     #   autosize=False,
     #   width=int(height / 0.7),
     #   height=height)
-    return fig.to_html(full_html=False,
+    light_div = fig.to_html(full_html=False,
                        include_plotlyjs=False # js loaded asyncly in layout.html
                        # include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.27.0.min.js'
                        )
+    fig.update_layout(template='plotly_dark')
+    dark_div = fig.to_html(full_html=False,
+                       include_plotlyjs=False # js loaded asyncly in layout.html
+                       # include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.27.0.min.js'
+                       )
+    return light_div, dark_div
   except Exception as e:
     logging.warning(f'plot failed for {plot_term.course.name} {semester}: {e}')
     return ''
@@ -236,13 +242,12 @@ def view_course(course_id):
 
   reviews = query.all()
   review_num = len(reviews)
+  light_fig_div = dark_fig_div = ''
   try:
     if plot_term.has_grade_graph:
-      div = plot_row(plot_term)
-    else:
-      div = ''
+      light_fig_div, dark_fig_div = plot_row(plot_term)
   except:
-    div = ''
+    logging.warning(f'failed to plot {course_id}')
     # div = '<div></div>'
   # print(course.credit)
   return render_template('course.html', course=course, course_rate=course.course_rate, reviews=reviews,
@@ -251,7 +256,7 @@ def view_course(course_id):
                          review_num=review_num, _anchor='my_anchor',
                          title=course.name_with_teachers_short,
                          description=str(course.rate.average_rate) + ' 分，' + str(course.rate.review_count) + ' 人评价',
-                         div_placeholder=div)
+                         light_fig_div=light_fig_div, dark_fig_div=dark_fig_div)
 
 
 @course.route('/<int:course_id>/upvote/', methods=['POST'])
