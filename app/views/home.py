@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import secrets
@@ -211,7 +212,32 @@ def signin():
   form = LoginForm()
   error = ''
 
-  print(request.cookies)
+  # print(request.cookies)
+  # cookies = request.cookies
+  # cookie_logged_in = cookies.get('logged_in')
+  # if cookie_logged_in:
+  # # try:
+  #   cookie_logged_in = parse.unquote(cookie_logged_in)
+  #   cookie_logged_in = base64.b64decode(cookie_logged_in)
+  #   loggin_user_info = json.loads(cookie_logged_in)
+  #   print(loggin_user_info)
+  #   jsonPayload = {
+  #     'username': loggin_user_info['username'],
+  #     'user_id': loggin_user_info['user_id'],
+  #     'avatar': loggin_user_info['avatar'],
+  #     'group': loggin_user_info['group']
+  #   }
+  #   calculated_hash = hashlib.sha256(json.dumps(jsonPayload).encode('utf-8')).hexdigest()
+  #   calculated_hmac = hmac.new(bytes('ab96563ac18a0247a72c8c90bb175f73', 'utf-8'), bytes(calculated_hash, 'utf-8'), hashlib.sha256).hexdigest()
+  #   print()
+  #   print(calculated_hash == loggin_user_info.get('payload_sha'))
+  #   print(calculated_hmac == loggin_user_info.get('hmac'))
+  #   print(f'calculated_hash: {calculated_hash}')
+  #   print(f'calculated_hmac: {calculated_hmac}')
+  #   print(loggin_user_info.get('key'))
+  #   print()
+  #   # except Exception as e:
+  #   #   print(e)
 
   nonce = secrets.token_urlsafe()
   return_url = f'{request.host_url}course/signincallback/'

@@ -4,6 +4,7 @@ Original: #337ab7
 辅色：
 */
 
+
 body {
     padding-bottom: 30px;
     background-color: #f3f3f3;
@@ -431,10 +432,10 @@ p {
 }
 
 .btn-white {
-    color: #1caaea;
+    color: #10a37e;
     font-weight: 600;
     background-color: #fff;
-    border: 1px #1caaea solid;
+    border: 1px #10a37e solid;
 }
 
 .btn-blue,
@@ -443,8 +444,8 @@ p {
 .btn-group-inv .active {
     color: #fff;
     font-weight: 600;
-    background-color: #1caaea;
-    border: 1px #1caaea solid;
+    background-color: #10a37e;
+    border: 1px #10a37e solid;
 }
 
 .btn-blue:hover {
@@ -581,7 +582,7 @@ a.nounderline:active {
 .select-box li.active,
 .select-box li.active a {
     color: #FFF;
-    background-color: #1caaea;
+    background-color: #10a37e;
 }
 
 .select-box a {
@@ -592,7 +593,7 @@ a.nounderline:active {
 .select-box li.item:hover,
 .select-box li.item:hover a {
     color: #FFF;
-    background-color: #1caaea;
+    background-color: #10a37e;
     cursor: pointer;
 }
 
@@ -717,7 +718,7 @@ a.nounderline:active {
 }
 
 #gotop {
-    background-color: #1caaea;
+    background-color: #10a37e;
 }
 
 #gotop span {
@@ -778,13 +779,47 @@ a.nounderline:active {
 }
 
 .review-content h1 {
-  font-size: 120%;
+    font-size: 120%;
 }
 
 .review-content h2 {
-  font-size: 110%;
+    font-size: 110%;
 }
 
 .review-content h3, .review-content h4, .review-content h5 {
-  font-size: 100%;
+    font-size: 100%;
 }
+
+/* Style rules for dark mode */
+@media (prefers-color-scheme: dark) {
+    body, .float-element {
+        background-color: #292c2d;
+        color: #b1aba4;
+    }
+
+    .navbar {
+        background-color: #292c2d;
+        color: #ffd700;
+    }
+
+    .select-box, .item {
+        background-color: #292c2d;
+        color: #10a37f;
+    }
+
+    /*.select-box li.item:hover, .select-box li.item:hover a {*/
+    /*            color: #ffd700;*/
+    /*}*/
+    .select-box li.item, .select-box li.item a {
+        color: #777;
+    }
+
+}
+
+/* Style rules for light mode */
+/*@media (prefers-color-scheme: light) {*/
+/*    body, .navbar, .float-element {*/
+/*        background-color: white;*/
+/*        color: black;*/
+/*    }*/
+/*}*/

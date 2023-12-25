@@ -93,8 +93,10 @@
 }
 
 /* light theme */
-.stellarnav.light {
-    background: rgba(255, 255, 255, 1);
+@media (prefers-color-scheme: light) {
+    .stellarnav.light {
+        background: rgba(255, 255, 255, 1);
+    }
 }
 
 .stellarnav.light a {
@@ -677,4 +679,10 @@ body.stellarnav-noscroll-x {
 
 .stellarnav > ul > li > ul > li > ul > li {
     background: rgb(234, 255, 255);
+}
+
+@media (prefers-color-scheme: dark) {
+    .stellarnav.light {
+        background: #292c2d;
+    }
 }

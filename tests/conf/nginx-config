@@ -17,7 +17,7 @@ server {
     }
 
     location /static {
-        root /f/xjtu.men/ustc-course/app;
+        root /f/xjtu.men/course-review/app;
         autoindex off;
     }
 
