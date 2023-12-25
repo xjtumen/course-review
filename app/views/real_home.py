@@ -43,5 +43,7 @@ def redirect_to_index():
 @real_home.route('/')
 def index():
   # this is supposed to be the Discourse root
+  # because we are using caddy to route traffic,
+  # we will not hit here
   pass
 
