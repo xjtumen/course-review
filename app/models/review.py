@@ -140,6 +140,10 @@ class Review(db.Model):
 
   @property
   def term_display(self):
+    # term starts from autumn
+    # 20771 -> 2077秋
+    # 20772 -> 2078秋
+    # 20773 -> 2078夏
     if self.term[4] == '1':
       return self.term[0:4] + '秋'
     elif self.term[4] == '2':

@@ -16,7 +16,7 @@ server {
         proxy_intercept_errors on;
     }
 
-    location /static {
+    location /course/static {
         root /f/xjtu.men/course-review/app;
         autoindex off;
     }

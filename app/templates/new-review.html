@@ -40,7 +40,7 @@
                                     {% endfor %}
                                 </select>
                                 {% if (not review.term or review.term not in course.term_ids) and not joined_term %}
-                                    <span class="grey">&nbsp;如果不记得了，可以随便选一个 :)</span>
+                                    <span class="grey">&nbsp;如果没有匹配的或者不记得，可以随便选一个 :)</span>
                                 {% endif %}
                                 <span class="clearfix"></span>
                             </div>
@@ -179,7 +179,7 @@
                 e.preventDefault();
 
                 if ($('select[name=term]').val() == '') {
-                    alert('请选择学期，如果不记得了，可以随便选一个 :)');
+                    alert('请选择学期，如果没有匹配的或者不记得，可以随便选一个 :)');
                     return;
                 }
                 if ($('input[name=difficulty]:radio:checked').length == 0) {
