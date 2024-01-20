@@ -135,12 +135,12 @@ def plot_row(plot_term):
     #   height=height)
     light_div = fig.to_html(full_html=False,
                        include_plotlyjs=False # js loaded asyncly in layout.html
-                       # include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.27.0.min.js'
+                       # include_plotlyjs='https://cf.xjtu.men/xjtumen-g/cdn/plotly-2.27.0.min.js'
                        )
     fig.update_layout(template='plotly_dark')
     dark_div = fig.to_html(full_html=False,
                        include_plotlyjs=False # js loaded asyncly in layout.html
-                       # include_plotlyjs='https://cf.xjtu.live/xjtumen-g/cdn/plotly-2.27.0.min.js'
+                       # include_plotlyjs='https://cf.xjtu.men/xjtumen-g/cdn/plotly-2.27.0.min.js'
                        )
     return light_div, dark_div
   except Exception as e:

@@ -4,7 +4,7 @@ import sys
 # Server config
 
 # do not set SERVER_NAME, and use caddy->nginx to enforce hostname
-# SERVER_NAME = 'xjtu.live'
+# SERVER_NAME = 'xjtu.men'
 DEBUG = False
 # DEBUG = True
 # SERVER_NAME = 'localhost:8110'
@@ -35,7 +35,7 @@ MAIL_USE_SSL = False
 MAIL_DEBUG = DEBUG
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
-MAIL_DEFAULT_SENDER = 'course-review-support@xjtu.live'
+MAIL_DEFAULT_SENDER = 'course-review-support@xjtu.men'
 MAIL_MAX_EMAILS = None
 # MAIL_SUPPRESS_SEND =
 MAIL_ASCII_ATTACHMENTS = False

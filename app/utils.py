@@ -344,7 +344,7 @@ def validate_username(username, check_db=True):
 def validate_email(email):
   regex = re.compile("[a-zA-Z0-9_]+@(mail\.)?xjtu\.edu\.cn")
   if not regex.fullmatch(email):
-    return ('必须使用XJTU.LIVE注册!')
+    return ('必须使用xjtu.men注册!')
   if User.query.filter_by(email=email).first():
     return ('此邮件地址已被注册！')
   return 'OK'
@@ -360,7 +360,7 @@ def text(html_string):
 def absolute(html_string):
   # TODO: potential pitfall:
   # where is this function used?
-  return lxml.html.make_links_absolute(html_string, base_url="https://xjtu.live/course")
+  return lxml.html.make_links_absolute(html_string, base_url="https://xjtu.men/course")
 
 
 def cal_validation_code(user):
