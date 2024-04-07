@@ -61,8 +61,8 @@ def index(lang_en=False):
     db.text('reg_year'), db.text('reg_month')).all()
 
   # find the distribution of review rates
-  review_rates = db.session.query(func.count(Review.id).label('count'), Review.rate).group_by(Review.rate).order_by(
-    Review.rate).all()
+  review_rates = db.session.query(func.count(Review.id).label('count'), Review.rate).filter(Review.rate > 0).group_by(
+      Review.rate).order_by(Review.rate).all()
 
   # find the distribution of course rates
   course_rates = db.session.query(func.floor(CourseRate._rate_average).label('rate'),

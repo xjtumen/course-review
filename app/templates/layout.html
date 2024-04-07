@@ -51,29 +51,28 @@
           </span>
                 </form>
 
-                <ul class="nav navbar-nav navbar-right desktop">
-                    {% if current_user.is_authenticated %}
-                        <li id="dropdown-notice">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false"
-                               onclick="read_notification({{ current_user.unread_notification_count }})">消息
-                                {% if current_user.unread_notification_count > 0 %}
-                                    <span class="badge notice-number-box">{{ current_user.unread_notification_count }}</span>
-                                {% endif %}
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                {% if current_user.latest_notifications_text|length == 0 %}
-                                    <p>还没有消息哦！</p>
-                                {% endif %}
-                                {% for notification_text in current_user.latest_notifications_text %}
-                                    <li class="ud-pd-sm dashed">
-                                        <div class="notice">{{ notification_text|safe }}</div>
-                                    </li>
-                                {% endfor %}
-                                <li class="ud-pd-sm pull-right"><a class="blue"
-                                                                   href="{{ url_for('user.notice') }}">查看全部</a></li>
-                            </ul>
-                        </li>
+        <ul class="nav navbar-nav navbar-right desktop">
+          {% if current_user.is_authenticated %}
+          <li id="dropdown-notice">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" onclick="read_notification({{ current_user.unread_notification_count }})">消息
+              {% if current_user.unread_notification_count > 0 %}
+              <span class="badge notice-number-box">{{ current_user.unread_notification_count }}</span>
+              {% endif %}
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              {% if current_user.latest_notifications_text|length == 0 %}
+              {% set notification_text_list = ["还没有消息哦！"] %}
+              {% else %}
+              {% set notification_text_list = current_user.latest_notifications_text %}
+              {% endif %}
+              {% for notification_text in notification_text_list %}
+              <li class="ud-pd-sm dashed">
+                <div class="notice">{{ notification_text|safe }}</div>
+              </li>
+              {% endfor %}
+              <li class="ud-pd-sm pull-right"><a class="blue" href="{{ url_for('user.notice')}}">查看全部</a></li>
+            </ul>
+          </li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -161,17 +160,20 @@
 </body>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="/course/static/js/jquery.min.js"></script>
-<script src="/course/static/js/bootstrap.min.js"></script>
-<script src="/course/static/js/clipboard.min.js"></script>
-{% include 'common-scripts.html' %}
-<script>
-    $('#signin').on('shown.bs.modal', function () {
-        $('#inputEmail').focus()
-    });
+
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/clipboard.min.js"></script>
+  <script type="text/javascript" id="MathJax-script" async src="/static/MathJax/es5/tex-svg.js"></script>
+  {% include 'common-scripts.html' %}
+  <script>
+   $('#signin').on('shown.bs.modal', function () {
+     $('#inputEmail').focus()
+   });
 
     function signin_alert(msg, type) {
         if (!type)

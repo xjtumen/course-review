@@ -265,5 +265,6 @@ def load_courses(insert=True):
 
 
 # we have merge now, do not drop existing data
-db.create_all()
-load_courses()
+with app.app_context():
+    db.create_all()
+    load_courses()

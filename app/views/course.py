@@ -168,15 +168,13 @@ def index():
       course_query = Course.query.distinct().join(CourseTerm).filter(
         CourseTerm.course_type.in_(course_type_dict[course_type]))
 
-  # 排序方式
-  if sort_by == 'popular':
-    # sort by review_count
-    courses_page = course_query.join(CourseRate).order_by(CourseRate.review_count.desc(),
-                                                          CourseRate._rate_average.desc()).paginate(page=page,
-                                                                                                    per_page=per_page)
-  else:
-    # default sort by rating
-    courses_page = course_query.join(CourseRate).order_by(Course.QUERY_ORDER()).paginate(page=page, per_page=per_page)
+    # 排序方式
+    if sort_by == 'popular':
+        # sort by review_count
+        courses_page = course_query.join(CourseRate).order_by(CourseRate.review_count.desc(), CourseRate._rate_average.desc()).paginate(page=page, per_page=per_page)
+    else:
+        # default sort by rating
+        courses_page = course_query.join(CourseRate).order_by(Course.QUERY_ORDER()).paginate(page=page, per_page=per_page)
 
   return render_template('course-index.html', courses=courses_page,
                          course_type=course_type, course_type_dict=course_type_dict, sort_by=sort_by, join_type=join_type, join_types=join_types,
@@ -215,6 +213,12 @@ def view_course(course_id):
   }
 
   query = Review.query.filter_by(course_id=course.id)
+
+  # filter hidden reviews to get correct review count
+  if not current_user.is_authenticated:
+      query = query.filter_by(is_hidden=False)
+  elif not current_user.is_admin:
+      query = query.filter(or_(Review.is_hidden == False, Review.author_id == current_user.id))
 
   # get terms list which have review
   review_term_list = course.review_term_list
